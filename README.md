@@ -42,20 +42,40 @@ Header:
 Delay.h, stdutils.h, gpioi.h
 
 # PIN DIAGRAM :
+<img width="486" height="336" alt="image" src="https://github.com/user-attachments/assets/a2fe4b7a-df4c-4f92-9d9c-1bc05dd0059a" />
+
  
 
 # CIRCUIT DIAGRAM:
+<img width="797" height="429" alt="image" src="https://github.com/user-attachments/assets/3c89a1bc-7a6c-4782-920c-0cc1c46d77f8" />
+
  
  
 # PROGRAM:
+```#include <lpc17xx.h> 
+#include "delay.h" //User defined library which conatins the delay routines 
+#include "gpio.h" 
+#define LED P1_29 // Led is connected to P1.29 
+/* start the main program */ 
+int main() 
+{ 
+ SystemInit(); //Clock and PLL configuration 
+ GPIO_PinFunction(LED,PINSEL_FUNC_0); // Configure Pin for Gpio 
+ GPIO_PinDirection(LED,OUTPUT); // Configure the pin as OUTPUT 
+ GPIO_PinWrite(LED,LOW); 
+ while(1) 
+ { 
+   /* Turn On all the leds and wait for 100ms */ 
+   GPIO_PinWrite(LED,HIGH); // Make all the Port pin as high 
+   DELAY_ms(100); 
+ 
+   GPIO_PinWrite(LED,LOW); // Make all the Port pin as low 
+   DELAY_ms(100); 
+  } 
+}```
 
 
  
 # Output:
-
-
-
-
-
-
+<img width="706" height="527" alt="514700725-45866f99-5741-40c4-a526-fd1b11e9a41f" src="https://github.com/user-attachments/assets/7a6733b5-17f1-4213-8fb8-741315d6d419" />
 
